@@ -13,5 +13,10 @@
     <h3><a href="{% url 'category' category.slug%}">{{category.name}}</a></h3>
 
 {%endfor%}
+
+{% for post in posts %}
+    <p>{{post}}</p>
+
+{%endfor%}
 </body>
 </html>

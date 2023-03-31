@@ -1,14 +1,19 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.base import View
-from .models import Category
+from .models import Category,Tag,Post,Comment
 
 
 class HomeView(View):
 
     def get(self, request):
         category_list = Category.objects.all()
-        return render(request, 'blog/home.html', {"categories": category_list})
+        post_list = Post.objects.all()
+        context = {
+            "categories": category_list,
+            "posts": post_list,
+        }
+        return render(request, 'blog/home.html', context=context)
 
 
 class CategoryView(View):
